@@ -212,43 +212,40 @@ export function PumpOrDump() {
             key={character.name}
             onSwipe={(dir) => swiped(dir, character.name, index)}
             onCardLeftScreen={() => outOfFrame(character.name, index)}
-            
           >
-            <div className='card shadow-lg w-full h-full flex justify-center items-center bg-[#0d0c11] rounded-3xl border border-1 border-slate-700/50'>
-              <div className='flex flex-col w-full h-full justify-start items-center' >
-              <p className='text-3xl font-bold text-white'>{character.name}</p>
-              <div className='bg-white rounded-xl relative'>
-                <div className="bg-[#0d0c11] h-full w-full z-1">
-                  <img
-                    src={character.url}
-                    alt={character.name}
-                    className='w-[500px] h-[500px] object-cover'
-                  />
-                  <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#0d0c11]/70 to-[#0d0c11]">
-                    <div className='mt-5 mr-5'>
-                      <div className=''>
-                        <TinderDrawer/>
+            <div className='card shadow-lg w-full h-[400px] flex justify-center items-center bg-[#0d0c11] rounded-3xl border border-1 border-slate-700/50'>
+              <div className='flex flex-col w-full h-full justify-start items-center'>
+                <p className='text-3xl font-bold text-white'>{character.name}</p>
+                <div className='bg-white rounded-xl relative'>
+                  <div className="bg-[#0d0c11] h-full w-full z-1">
+                    <img
+                      src={character.url}
+                      alt={character.name}
+                      className='w-[300px] h-[300px] object-cover'
+                    />
+                    <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#0d0c11]/70 to-[#0d0c11]">
+                      <div className='mt-5 mr-5'>
+                        <div className=''>
+                          <TinderDrawer/>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className='flex flex-col mt-8'>
-              <div className='flex flex-row gap-10'>
+                <div className='flex flex-col mt-8'>
+                  <div className='flex flex-row gap-10'>
                     <a className="active:scale-90 transition-transform duration-200 ease-in-out transform active:duration-100" onClick={() => swipe('left')}>
-                    <DumpIcon />
+                      <DumpIcon />
                     </a>
-
                     <a className="active:scale-90 transition-transform duration-200 ease-in-out transform active:duration-100" onClick={() => goBack()}>
                       <BackIcon />
                     </a>
-
                     <a className="active:scale-90 transition-transform duration-200 ease-in-out transform active:duration-100" onClick={() => swipe('right')}>
                       <PumpIcon />  
                     </a>
+                  </div>
+                </div>
               </div>
-              </div>
-            </div>
             </div>
           </TinderCard>
         ))}
