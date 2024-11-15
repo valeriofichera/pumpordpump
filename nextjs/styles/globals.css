@@ -1,0 +1,185 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
+
+:root {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #0d0c11;
+  /* background: linear-gradient(to bottom, #171821, #1C1B30); */
+  /* background: linear-gradient(to bottom, #00C806, #1B2620); */
+}
+
+* {
+  user-select: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  overflow: hidden;
+}
+
+.app>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  flex-direction: row !important;
+}
+
+.row>* {
+  margin: 5px;
+}
+
+h1 {
+  font-family: 'Damion', cursive;
+  color: #fff;
+  text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
+}
+
+h2 {
+  color: #fff;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.cardContainer {
+  width: 90vw;
+  max-width: 260px;
+  height: 300px;
+}
+
+.card-shadow {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  border-radius: 1000px;
+  /* background-color: #000000;
+
+  box-shadow: 60px 0px 60px -30px rgba(0, 255, 85, 0.3), -60px 0px 60px -30px rgba(255, 0, 0, 0.3); */
+
+}
+
+/* --------- ADD SPINING ANIMATION TO CARD-SHADOW ------------ */
+
+.card {
+  padding: 5px;
+  position: relative;
+  width: 100vw;
+  max-width: 370px;
+  height: 700px;
+
+  /* border-radius: 15px;
+  border: 3px solid; */
+  /* border-image: linear-gradient(to bottom, pink, #0d0c11) 1 round; */
+
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+}
+
+.swipe:last-of-type {
+
+}
+
+.card h3 {
+  position: absolute;
+  bottom: 0;
+  margin: 10px;
+  color: #fff;
+}
+
+.infoText {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  color: #ff00d4;
+  animation-name: popup;
+  animation-duration: 800ms;
+}
+
+/* .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px;
+  row-gap: 10px;
+} */
+
+@media (max-width: 625px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+.buttons button {
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  background-color: #9198e5;
+  transition: 200ms;
+  margin: 10px;
+  font-weight: bolder;
+  width: 160px;
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.10);
+}
+
+.buttons button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes popup {
+  0%   { transform: scale(1,1) }
+  10%  { transform: scale(1.1,1.1) }
+  30%  { transform: scale(.9,.9) }
+  50%  { transform: scale(1,1) }
+  57%  { transform: scale(1,1) }
+  64%  { transform: scale(1,1) }
+  100% { transform: scale(1,1) }
+}
