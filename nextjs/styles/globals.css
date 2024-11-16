@@ -183,3 +183,31 @@ h2 {
   64%  { transform: scale(1,1) }
   100% { transform: scale(1,1) }
 }
+
+.text-neon-green {
+  color: #39ff14;
+}
+
+.text-neon-pink {
+  color: #ff007f;
+}
+
+.neon-text-shadow {
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
+}
+
+.shadow-neon {
+  box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+}
+
+.shadow-avatar-glow {
+  box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+}
+
+.shadow-chart-glow {
+  box-shadow: 0 0 15px #2bffda, 0 0 30px #2bffda;
+}
+
+.neon-border {
+  border: 2px solid #39ff14;
+}
