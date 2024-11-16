@@ -28,77 +28,80 @@ export const db = [
 ];
 
 export default function TinderDrawer() {
+  const character = db[0]; // Since there's only one item
+
   return (
     <div className="relative">
       {/* Original placement for the info button */}
       <Drawer>
         <DrawerTrigger asChild>
           <div className="absolute top-4 right-4">
-            <button className="rounded-full p-2 hover:bg-gray-800 transition-colors duration-200">
-              <Info className="text-white h-6 w-6" />
+            <button className="rounded-full p-2 bg-[#1a1a2e] hover:bg-[#222242] transition-colors duration-200 shadow-neon">
+              <Info className="text-cyan-400 h-6 w-6" />
             </button>
           </div>
         </DrawerTrigger>
-        <DrawerContent className="h-[85vh] sm:h-[90vh] bg-gradient-to-b from-gray-900 to-gray-800 text-white border-none rounded-lg">
+        <DrawerContent className="h-[85vh] sm:h-[90vh] bg-gradient-to-b from-[#0a0a23] to-[#1c1c3b] text-neon-green border-none rounded-lg shadow-neon">
           <div className="mx-auto w-full max-w-md h-full flex flex-col">
+            {/* Header with Avatar, Symbol, and Ticker */}
             <DrawerHeader className="text-center py-4">
-              <Avatar className="w-16 h-16 mx-auto mb-4 shadow-lg">
-                <AvatarImage src={db[0].url} alt="Profile picture" />
-                <AvatarFallback>BTC</AvatarFallback>
+              <Avatar className="w-16 h-16 mx-auto mb-2 shadow-avatar-glow">
+                <AvatarImage src={character.url} alt="Profile picture" />
+                <AvatarFallback className="bg-cyan-500 text-black">{character.ticker}</AvatarFallback>
               </Avatar>
-              {db.map((character, index) => (
-                <div key={index} className="text-white px-4">
-                  <DrawerTitle className="text-2xl font-bold text-center">${character.ticker}</DrawerTitle>
-                  <DrawerDescription className="text-center">{character.name}</DrawerDescription>
-                </div>
-              ))}
+              <div className="text-neon-green px-4">
+                <DrawerTitle className="text-xl font-bold text-center neon-text-shadow">
+                  ${character.ticker}
+                </DrawerTitle>
+                <DrawerDescription className="text-center text-cyan-400 text-sm">{character.name}</DrawerDescription>
+              </div>
             </DrawerHeader>
+
+            {/* Chart placed under the header */}
+            <div className="px-4 pb-4">
+              <div className="bg-[#2b2b47] rounded-xl overflow-hidden shadow-chart-glow">
+                <img
+                  src="https://user-images.githubusercontent.com/9406025/88488755-f1164000-cf97-11ea-87d1-53ad78c1a587.png"
+                  alt="Chart"
+                  className="w-full h-48 object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Details section */}
             <ScrollArea className="flex-grow px-4 pb-4">
               <div className="space-y-6">
-                <Separator />
-                <div>
-                  <h4 className="font-semibold mb-2 text-lg">Details</h4>
-                  {db.map((character, index) => (
-                    <div key={index} className="text-sm space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Name:</span>
-                        <span>{character.name}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Ticker:</span>
-                        <span>${character.ticker}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Price:</span>
-                        <span>{character.price} USD</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Market Cap:</span>
-                        <span>{character.mcap}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Created:</span>
-                        <span>{character.created}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Separator />
-                <div>
-                  <div className="bg-gray-700 rounded-xl overflow-hidden shadow-lg">
-                    <img
-                      src="https://user-images.githubusercontent.com/9406025/88488755-f1164000-cf97-11ea-87d1-53ad78c1a587.png"
-                      alt="Chart"
-                      className="w-full object-cover"
-                    />
+                <Separator className="border-cyan-500" />
+                <div className="text-sm space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-cyan-400">Name:</span>
+                    <span className="text-neon-green">{character.name}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-cyan-400">Ticker:</span>
+                    <span className="text-neon-green">${character.ticker}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-cyan-400">Price:</span>
+                    <span className="text-neon-green">{character.price} USD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-cyan-400">Market Cap:</span>
+                    <span className="text-neon-green">{character.mcap}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-cyan-400">Created:</span>
+                    <span className="text-neon-green">{character.created}</span>
                   </div>
                 </div>
-                <Separator />
+                <Separator className="border-cyan-500" />
               </div>
             </ScrollArea>
+
+            {/* Close button */}
             <div className="absolute bottom-0 left-0 right-0 p-4 w-full max-w-md mx-auto">
               <DrawerClose asChild>
-                <button className="w-full py-3 bg-gradient-to-br from-green-600 to-green-800 rounded-lg text-white hover:from-green-500 hover:to-green-700 transition-transform duration-200 active:scale-95">
+                <button className="w-full py-3 bg-gradient-to-br from-[#19A974] to-[#165D4E] rounded-lg text-white neon-border hover:from-[#1AC17E] hover:to-[#184B5F] transition-transform duration-200 active:scale-95">
                   Close
                 </button>
               </DrawerClose>
