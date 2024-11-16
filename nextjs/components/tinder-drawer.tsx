@@ -44,16 +44,14 @@ export default function TinderDrawer() {
         <DrawerContent className="h-[85vh] sm:h-[90vh] bg-gradient-to-b from-[#0a0a23] to-[#1c1c3b] text-neon-green border-none rounded-lg shadow-neon">
           <div className="mx-auto w-full max-w-md h-full flex flex-col">
             {/* Header with Avatar, Symbol, and Ticker */}
-            <DrawerHeader className="text-center py-4">
-              <Avatar className="w-16 h-16 mx-auto mb-2 shadow-avatar-glow">
+            <DrawerHeader className="flex items-center justify-center py-10 space-x-4">
+              <Avatar className="w-16 h-16 shadow-avatar-glow">
                 <AvatarImage src={character.url} alt="Profile picture" />
                 <AvatarFallback className="bg-cyan-500 text-black">{character.ticker}</AvatarFallback>
               </Avatar>
-              <div className="text-neon-green px-4">
-                <DrawerTitle className="text-xl font-bold text-center neon-text-shadow">
-                  ${character.ticker}
-                </DrawerTitle>
-                <DrawerDescription className="text-center text-cyan-400 text-sm">{character.name}</DrawerDescription>
+              <div className="text-neon-green">
+                <DrawerTitle className="text-xl font-bold neon-text-shadow">${character.ticker}</DrawerTitle>
+                <DrawerDescription className="text-cyan-400 text-sm">{character.name}</DrawerDescription>
               </div>
             </DrawerHeader>
 
