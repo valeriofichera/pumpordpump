@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import DB from "../data/db";
 import DumpImage from "./assets/DumpImage";
 import PumpImage from "./assets/PumpImage";
@@ -67,6 +66,10 @@ export function PumpOrDump() {
         swipe("right");
       } else if (event.key === "ArrowLeft") {
         swipe("left");
+      } else if (event.key === "ArrowUp") {
+        swipe("up");
+      } else if (event.key === "ArrowDown") {
+        swipe("down");
       }
     };
 
@@ -161,7 +164,14 @@ export function PumpOrDump() {
               </div>
             </div>
           )}
-          {lastDirection === "left" ? "" : lastDirection === "right" ? "" : lastDirection}
+          {lastDirection === "down" && (
+            <div className="relative overflow-hidden rounded-lg mt-12 animate__animated animate__bounceOutDown">
+              <div className="rounded-lg overflow-hidden">
+                <DumpImage /> {/* Replace with a different image if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#110c0f] to-transparent rounded-lg"></div>
+              </div>
+            </div>
+          )}
         </p>
       ) : (
         <></>
