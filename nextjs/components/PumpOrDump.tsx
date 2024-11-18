@@ -81,10 +81,7 @@ export function PumpOrDump() {
 
   return (
     <div>
-      <div className="text-3xl">
-        <div>Pump Or Dump</div>
-      </div>
-      <div className="fixed left-0 right-0 flex justify-center items-center pt-96">
+      <div className="fixed left-0 right-0 flex justify-center items-center pt-96 mt-10">
         {DB.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}

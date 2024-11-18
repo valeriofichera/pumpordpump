@@ -25,9 +25,9 @@ export default function TinderDrawer({ticker}) {
     <div className="relative">
       <Drawer>
         <DrawerTrigger asChild>
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-1 right-1">
             <button className="rounded-full p-2 bg-[#1a1a2e] hover:bg-[#222242] transition-colors duration-200 shadow-neon">
-              <Info className="text-cyan-400 h-6 w-6" />
+              <Info className="" />
             </button>
           </div>
         </DrawerTrigger>
