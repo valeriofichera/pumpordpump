@@ -31,6 +31,7 @@ const Footer = () => {
         </Link> */}
         <a className="active:bg-[#F57DE3]/50 active:scale-90 transition-transform duration-200 ease-in-out transform active:duration-100" href="/user">
         <WalletIcon className="" />
+        <span>$120</span>
         </a>
       </div>
     </div>
