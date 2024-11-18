@@ -102,7 +102,7 @@ export function PumpOrDump() {
                     <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#0d0c11]/70 to-[#0d0c11]">
                       <div className="mt-5 mr-5">
                         <div className="">
-                          <TinderDrawer />
+                          <TinderDrawer ticker={"BTC"}/> 
                         </div>
                       </div>
                     </div>

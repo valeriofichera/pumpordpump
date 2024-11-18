@@ -15,38 +15,10 @@ import {
 } from "~~/components/ui/drawer";
 import { ScrollArea } from "~~/components/ui/scroll-area";
 import { Separator } from "~~/components/ui/separator";
+import { useTokenData } from "~~/hooks/useTokenInfo";
 
-export default function TinderDrawer() {
-  const [character, setCharacter] = React.useState({
-    name: "Loading...",
-    ticker: "BTC",
-    description: "Loading description...",
-    mcap: "Loading...",
-    created: "2009",
-    price: "Loading...",
-    url: "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
-  });
-
-  React.useEffect(() => {
-    // Fetch data from CoinGecko API
-    axios
-      .get("https://api.coingecko.com/api/v3/coins/bitcoin")
-      .then((response) => {
-        const data = response.data;
-        setCharacter({
-          name: data.name,
-          ticker: data.symbol.toUpperCase(),
-          description: data.description.en || "No description available.",
-          mcap: `$${(data.market_data.market_cap.usd / 1e12).toFixed(2)}T`,
-          created: "2009", // or fetch genesis date if needed
-          price: `$${data.market_data.current_price.usd.toLocaleString()}`,
-          url: data.image.small,
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+export default function TinderDrawer({ticker}) {
+  const {tokenData} = useTokenData(ticker);
 
   return (
     <div className="relative">
@@ -62,12 +34,12 @@ export default function TinderDrawer() {
           <div className="mx-auto w-full max-w-md h-full flex flex-col">
             <DrawerHeader className="flex items-center justify-center py-10 space-x-4">
               <Avatar className="w-16 h-16 shadow-avatar-glow">
-                <AvatarImage src={character.url} alt="Profile picture" />
-                <AvatarFallback className="bg-cyan-500 text-black">{character.ticker}</AvatarFallback>
+                <AvatarImage src={tokenData.url} alt="Profile picture" />
+                <AvatarFallback className="bg-cyan-500 text-black">{tokenData.ticker}</AvatarFallback>
               </Avatar>
               <div className="text-neon-green">
-                <DrawerTitle className="text-xl font-bold neon-text-shadow">${character.ticker}</DrawerTitle>
-                <DrawerDescription className="text-cyan-400 text-sm">{character.name}</DrawerDescription>
+                <DrawerTitle className="text-xl font-bold neon-text-shadow">${tokenData.ticker}</DrawerTitle>
+                <DrawerDescription className="text-cyan-400 text-sm">{tokenData.name}</DrawerDescription>
               </div>
             </DrawerHeader>
 
@@ -87,23 +59,23 @@ export default function TinderDrawer() {
                 <div className="text-sm space-y-2">
                   <div className="flex justify-between">
                     <span className="text-cyan-400">Name:</span>
-                    <span className="text-neon-green">{character.name}</span>
+                    <span className="text-neon-green">{tokenData.name}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-cyan-400">Ticker:</span>
-                    <span className="text-neon-green">${character.ticker}</span>
+                    <span className="text-neon-green">${tokenData.ticker}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-cyan-400">Price:</span>
-                    <span className="text-neon-green">{character.price} USD</span>
+                    <span className="text-neon-green">{tokenData.price} USD</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-cyan-400">Market Cap:</span>
-                    <span className="text-neon-green">{character.mcap}</span>
+                    <span className="text-neon-green">{tokenData.mcap}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-cyan-400">Created:</span>
-                    <span className="text-neon-green">{character.created}</span>
+                    <span className="text-neon-green">{tokenData.created}</span>
                   </div>
                 </div>
                 <Separator className="border-cyan-500" />
