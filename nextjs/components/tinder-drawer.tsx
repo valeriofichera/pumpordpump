@@ -15,7 +15,8 @@ import {
 } from "~~/components/ui/drawer";
 import { ScrollArea } from "~~/components/ui/scroll-area";
 import { Separator } from "~~/components/ui/separator";
-import { useTokenData } from "~~/hooks/useTokenInfo";
+import { useTokenData } from "~~/hooks/useTokenData";
+import TokenStats from "./TokenStats";
 
 export default function TinderDrawer({ticker}) {
   const {tokenData} = useTokenData(ticker);
@@ -56,28 +57,7 @@ export default function TinderDrawer({ticker}) {
             <ScrollArea className="flex-grow px-4 pb-4">
               <div className="space-y-6">
                 <Separator className="border-cyan-500" />
-                <div className="text-sm space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-cyan-400">Name:</span>
-                    <span className="text-neon-green">{tokenData.name}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-cyan-400">Ticker:</span>
-                    <span className="text-neon-green">${tokenData.ticker}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-cyan-400">Price:</span>
-                    <span className="text-neon-green">{tokenData.price} USD</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-cyan-400">Market Cap:</span>
-                    <span className="text-neon-green">{tokenData.mcap}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-cyan-400">Created:</span>
-                    <span className="text-neon-green">{tokenData.created}</span>
-                  </div>
-                </div>
+                <TokenStats tokenData={tokenData} />
                 <Separator className="border-cyan-500" />
               </div>
             </ScrollArea>
